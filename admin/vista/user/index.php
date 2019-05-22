@@ -36,7 +36,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                 <li><a href="<?php echo $final1 ?>">NUEVO MENSAJE</a></li>
                     <?php 
                         $codigo = $resultarr["usu_codigo"];
-                        $cad1 = "nuevoMensaje.php?usuario=";
+                        $cad1 = "mensajeEnviado.php?usuario=";
                         $final = $cad1 . $usuario;
                     ?>
                 <li><a href= "<?php echo $final ?>" >MENSAJES ENVIADOS </a></li>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                             $cad1 = "modificar.php?codigo=";
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
-                            $cad3 = "cambiar_contrasena.php?codigo=";
+                            $cad3 = "cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
                             $cad4 = "eliminar.php?codigo=";
                             $final3= $cad4 . $cad2;

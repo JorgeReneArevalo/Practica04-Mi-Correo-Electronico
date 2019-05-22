@@ -8,11 +8,12 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../../../js/ajax.js" type="text/javascript">  </script>
-    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyle/estilo2.css" rel="stylesheet"/>
-    <link href="../../../estyle/titulos.css" rel="stylesheet"/>
-    <link href="../../../estyle/imagenes.css" rel="stylesheet"/>
+    <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
+    <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
+    <link href="../../../estyles/titulos.css" rel="stylesheet"/>
+    <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
+    <link href="../../../estyles/estilo.css" rel="stylesheet">
     <title>Nuevo Mnesaje</title>
 
 </head>
@@ -37,7 +38,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                 <li><a href="<?php echo $final1 ?>">NUEVO MENSAJE</a></li>
                     <?php 
                         $codigo = $resultarr["usu_codigo"];
-                        $cad1 = "mensajeEnviado.php?usuario=";
+                        $cad1 = "nuevoMensaje.php?usuario=";
                         $final = $cad1 . $usuario;
                     ?>
                 <li><a href= "<?php echo $final ?>" >MENSAJES ENVIADOS </a></li>
@@ -77,7 +78,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                     if ($result->num_rows > 0) { 
                         while($row = $result->fetch_assoc()) { 
                         ?> 
-                            <form id="formulario01" method="POST" action="../../controladores/user/modificar.php"> 
+                            <form id="formulario01" method="POST" action="../../controladores/usser/modificar.php"> 
                                 <legend><Strong> ACTUALIZAR DATOS DEL USUARIO </Strong> </legend> <br> 
                                 <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
             

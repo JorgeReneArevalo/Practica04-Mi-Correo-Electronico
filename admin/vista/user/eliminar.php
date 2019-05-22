@@ -39,7 +39,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                 <li><a href="<?php echo $final1 ?>">NUEVO MENSAJE</a></li>
                     <?php 
                         $codigo = $resultarr["usu_codigo"];
-                        $cad1 = "nuevoMensaje.php?usuario=";
+                        $cad1 = "mensajeEnviado.php?usuario=";
                         $final = $cad1 . $usuario;
 
                     ?>  
@@ -49,14 +49,14 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                     <ul>     
                         <?php 
                             $codigo = $resultarr["usu_codigo"];
-                            $cad1 = "modificar2.php?codigo=";
+                            $cad1 = "modificar.php?codigo=";
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
 
-                            $cad3 = "cambiar_contrasena2.php?codigo=";
+                            $cad3 = "cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
 
-                            $cad4 = "eliminar2.php?codigo=";
+                            $cad4 = "eliminar.php?codigo=";
                             $final3= $cad4 . $cad2;
 
 
@@ -85,7 +85,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                 if ($result->num_rows > 0) { 
                     while($row = $result->fetch_assoc()) { 
                         ?> 
-                            <form id="formulario01" method="POST" action="../../controladores/usuario/eliminar.php"> 
+                            <form id="formulario01" method="POST" action="../../controladores/user/eliminar.php"> 
                                 <legend><Strong> ELIMINACIÓN DE UN USUARIO</Strong> </legend> <br> 
                                 <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
                                 

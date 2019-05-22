@@ -36,7 +36,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
         <li><a href="<?php echo $final1 ?>">NUEVO MENSAJE</a></li>
           <?php 
             $codigo = $resultarr["usu_codigo"];
-            $cad1 = "nuevoMensaje.php?usuario=";
+            $cad1 = "mensajeEnviado.php?usuario=";
             $final = $cad1 . $usuario;
           ?>
         <li><a href= "<?php echo $final ?>" >MENS. ENVIADOS </a></li>
