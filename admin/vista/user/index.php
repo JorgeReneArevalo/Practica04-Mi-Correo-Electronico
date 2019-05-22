@@ -1,12 +1,17 @@
-<!DOCTYPE html>
+<?php
+session_start();  
+if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
+  header("Location: /Practica04/public/vista/login.html"); 
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <script src="../../../js/ajax.js" type="text/javascript">  </script>
-    <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
-    <link href="../../../estyles/titulos.css" rel="stylesheet"/>
-    <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
+    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../estyle/estilo2.css" rel="stylesheet"/>
+    <link href="../../../estyle/titulos.css" rel="stylesheet"/>
+    <link href="../../../estyle/imagenes.css" rel="stylesheet"/>
     <title>Pagina Usuario</title>
 
 </head>
@@ -72,13 +77,13 @@
     <div> 
         <article>
             <h1>MENSAJES RECIBIDOS </h1>
-            <form  onkeyup="return buscarPorCedula()">
+            <form  name="miformulario" onkeyup="return buscarPorCedula()">
                 <input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario ?>" /> 
                 <input type="text"  id="caja_busqueda" name="caja_busqueda"  value="" placeholder="Buscar por remitente " >
             </form>
             
             <div  id="informacion" ><b> </b></div>
-
+             <!-- 
             <body> 
                 <br>
                 <table border = 1 style="width:100%"> 
@@ -91,7 +96,7 @@
 
                     <?php
                         include '../../../config/conexionBD.php';
-                        $sql = "SELECT * FROM correo where usu_destinatario= '$usuario' order by usu_codigo desc "; 
+                        $sql = "SELECT * FROM correo where usu_destinatario= '$usuario' "; 
                         $result = $conn->query($sql); 
                         
                         if ($result->num_rows > 0) { 
@@ -110,7 +115,8 @@
                         $conn->close(); 
                     ?>
                 </table> 
-            </body>        
+            </body>  
+            -->      
         </article>
                    
     </div>
