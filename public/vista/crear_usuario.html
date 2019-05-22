@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crear Usuario</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../config/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="formulario">
+    <form method="POST" action="../controladores/crear_usuario.php" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Gestion de usuario</legend><br>
+            <!--<label for="codigo">CODIGO:</label><input type="text" name="codigo" required> -->
+            <div>
+                <label for="cedula">CEDULA:</label>
+                <input type="text" name="cedula" required>
+            </div>
+
+            <div>
+                <label for="roles"> Usuario(*) <br> Roles: </label>
+                
+                <input type="checkbox" name="admin" value="admin"> Admin
+                <input type="checkbox" name="user" value="user"> User
+            </div>
+
+            <div>
+                <label for="nombres">NOMBRES:</label>
+                <input type="text" name="nombres" required>
+            </div>
+
+            <div>
+                <label for="apellidos">APELLIDOS:</label>
+                <input type="text" name="apellidos" required>
+            </div>
+
+            <di>
+                <label for="direccion">DIRECCION:</label>
+                <input type="text" name="direccion" required>
+            </di>
+
+            <di>
+                <label for="telefono">TELEFONO:</label>
+                <input type="text" name="telefono" required>
+            </di>
+
+            <di>
+                <label for="Fecha de Nacimiento">FECHA DE NACIMIENTO:</label>
+                <input type="date" name="FechaDeNacimiento" required>
+            </di>
+
+            <div>
+                <label for="correo">CORREO:</label>
+                <input type="email" name="correo" required>
+            </div>
+
+            <div>
+                <label for="contraseña">CONTRASEÑA:</label>
+                <input type="password" name="contraseña" required>
+            </div>
+            <div class="button">
+            <input type="submit" value="CREAR">
+            <input type="reset" value="CANCELAR">
+            
+        </div>
+        </fieldset>
+    </form>
+
+
+</body>
+
+</html>
