@@ -100,7 +100,7 @@
                                 echo " <td>" . $row["usu_fecha"] . "</td>";
                                 echo " <td>" . $row['usu_remitente'] . "</td>"; 
                                 echo " <td>" . $row['usu_asunto'] . "</td>"; 
-                                echo " <td> <a href='../../vista/user/leerMensaje.php?mensaje=" . $row['usu_mensaje'] . "'>Leer</a> </td>";
+                                echo " <td> <a href='../../controladores/user/leerMensaje.php?mensaje=" . $row['usu_mensaje'] . "'>Leer</a> </td>";
                             }
                         }else {
                             echo "<tr>"; 
