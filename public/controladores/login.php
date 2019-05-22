@@ -25,14 +25,14 @@
    if ($result->num_rows > 0) {
       $_SESSION['isLogged']=TRUE;
 
-      if ( $attempts == 'admin' ) {
+      if ( $attempts == 'user' ) {
          $_SESSION['isUser'] = TRUE;
          $_SESSION['usuario'] = $rows['usu_codigo'];
-         header("Location:../../admin/vista/user/index.php");
-      } else if ($rows['usu_rol'] == 'admin') {
+         header("Location: ../../admin/vista/user/index.php");
+      } else if ($attempts == 'admin') {
          $_SESSION['isAdmin'] = TRUE;
          $_SESSION['usuario'] = $rows['usu_codigo']; 
-         header("Location:../../admin/vista/admin/index.php");
+         header("Location: ../../admin/vista/admin/index.php");
       }
    } else {
       header("Location:../vista/login.html");

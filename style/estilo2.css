@@ -1,0 +1,48 @@
+
+
+
+
+#contenido{
+    width:62%;
+    margin-left: 20px;
+    margin-top: 100px;
+  
+    padding: 50px 5px 10px 5px;
+
+    /**
+    border-width: 10px; 
+    border-style: solid;
+    
+    border-color:teal  ;
+
+    padding: 5px 5px 10px 5px;
+    float:left;
+    
+    */
+    ;
+}
+
+#lateral{
+    width: 30%;  
+    	
+    border-top: -5px; 
+   
+    
+
+    padding: 5px 5px 10px 10px;
+    margin-left: 1000px;
+    float:left;
+
+}
+
+.container {
+    width: 00px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+        
+        
+
+
