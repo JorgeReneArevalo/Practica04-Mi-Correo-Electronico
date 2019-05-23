@@ -1,25 +1,23 @@
-<?php
-session_start();  
-if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
-  header("Location: /Practica04/public/vista/login.html"); 
-}
+
+<?php 
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){ 
+        header("Location: /Practica04//public/vista/login.html"); 
+        } 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
-  <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
-  <link href="../../../style/estilo2.css" rel="stylesheet"/>
-  <link href="../../../style/titulos.css" rel="stylesheet"/>
-  <link href="../../../style/imagenes.css" rel="stylesheet"/>
-  <link href="../../../style/estilo.css" rel="stylesheet">
+
   <title>ACTUALIZAR CONTRASEÑA </title>
 </head>
 <body>
   <?php 
     include '../../../config/conexionBD.php';
-    $usuario=$_SESSION['usuario']; 
+    $usuario=$_SESSION['user']; 
     $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
     $result=$conn->query($sql);
     $resultarr=mysqli_fetch_assoc($result);
@@ -27,7 +25,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
   <div id ="contenido">
     <nav > 
       <ul class="nav" >
-        <li><a >INICIO</a></li>
+        <li><a href="../../vista/user/index.php">INICIO</a></li>
           <?php 
             $usuario = $resultarr["usu_correo"];
             $cad1 = "../../vista/user/enviarCorreo.php?usuario=";
@@ -94,7 +92,6 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
             echo "<p>La contraseña actual no coincide con nuestros registros!!! </p>"; 
           } 
 
-          }
           $conn->close(); 
         ?> 
       </body> 

@@ -1,9 +1,11 @@
-<?php
-session_start();
-if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
-    header("Location: /Practica04/public/vista/login.html");
-}
+<?php 
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){ 
+        header("Location: /Practica04/public/vista/login.html"); 
+        } 
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -14,16 +16,13 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
         <meta charset=”utf-8” />
         <title>CORREO ENVIADO</title>
         <script src="../../../js/ajax.js" type="text/javascript">  </script>
-        <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
-        <link href="../../../style/estilo2.css" rel="stylesheet"/>
-        <link href="../../../style/titulos.css" rel="stylesheet"/>
-        <link href="../../../style/imagenes.css" rel="stylesheet"/>
+
                 
 </head>
 <body>
   <?php 
     include '../../../config/conexionBD.php';
-    $usuario=$_SESSION['usuario'];
+    $usuario=$_SESSION['user'];
     $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
     $result=$conn->query($sql); 
     $resultarr=mysqli_fetch_assoc($result);

@@ -1,9 +1,11 @@
-<?php
-session_start();  
-if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
-  header("Location: /Practica04/public/vista/login.html"); 
-}
+
+<?php 
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['privilegios'] === 'admin' ){ 
+        header("Location: /Practica04/public/vista/login.html"); 
+        } 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +23,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <body>
     <?php 
         include '../../../config/conexionBD.php';
-        $usuario=$_SESSION['usuario']; 
+        $usuario=$_SESSION['user']; 
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
@@ -29,7 +31,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
     <div id ="contenido">
         <nav >
             <ul class="nav" >
-                <li><a href="paginaUsuario.php">INICIO</a></li>
+                <li><a href="index.php">INICIO</a></li>
                     <?php 
                         $usuario = $resultarr["usu_correo"];
                         $cad1 = "enviarCorreo.php?usuario=";

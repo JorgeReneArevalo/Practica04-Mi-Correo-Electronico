@@ -1,19 +1,15 @@
 <?php 
-session_start();   
-if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
-    header("Location: /Practica04/public/vista/login.html"); 
-}
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['privilegios'] === 'user'  ){ 
+        header("Location: /Practica04/public/vista/login.html"); 
+        } 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
-    <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../style/estilo2.css" rel="stylesheet"/>
-    <link href="../../../style/titulos.css" rel="stylesheet"/>
-    <link href="../../../style/imagenes.css" rel="stylesheet"/>
-    <link href="../../../style/estilo.css" rel="stylesheet">
+
     <title>Cambiar Contraseña</title>
 </head>
 <body>
@@ -28,7 +24,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
         <nav > 
             <ul class="nav" >
                 <li><a href="index.php">INICIO</a></li>
-                    <li><a href="listaUsuario.php">USUARIOS</a></li>
+                    <li><a href="listarUsuario.php">USUARIOS</a></li>
                     <li><a  >MI CUENTA</a>
                         <ul>     
                             <?php 
@@ -57,7 +53,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
                 <?php 
                     $codigo = $resultarr["usu_codigo"];
                 ?>         
-                 <form id="formulario01" method="POST" action="../../controladores/usuario/cambiar_contraseña.php"> 
+                 <form id="formulario01" method="POST" action="../../controladores/admin/cambiar_contraseña.php"> 
                     <legend><Strong>ACTUALIZAR SU CONTRASEÑA </Strong> </legend> <br> 
                     <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
                 

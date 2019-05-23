@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Login</title>
-</head>
-<body>
+
    <?php  
-      session_start();  
-   ?> 
-   <?php
+   session_start();  
    include '../../config/conexionBD.php';
 
    $usuario=isset($_POST["correo"]) ? trim($_POST["correo"]) : null;
+   
    $contraseña=isset($_POST["contraseña"]) ? trim($_POST["contraseña"]) : null;  
    $contra = MD5($contraseña);
 
@@ -25,19 +18,20 @@
    if ($result->num_rows > 0) {
       $_SESSION['isLogged']=TRUE;
 
-      if ( $attempts == 'user' ) {
-         $_SESSION['isUser'] = TRUE;
-         $_SESSION['usuario'] = $rows['usu_codigo'];
-         header("Location: ../../admin/vista/user/index.php");
-      } else if ($attempts == 'admin') {
-         $_SESSION['isAdmin'] = TRUE;
-         $_SESSION['usuario'] = $rows['usu_codigo']; 
+      if ( $attempts == 'admin' ) {
+         $_SESSION['admin'] = $usuario;
+         $_SESSION['privilegios'] = 'admin';
          header("Location: ../../admin/vista/admin/index.php");
+      } else if ($attempts == 'user') {
+         $_SESSION['user'] = $usuario;
+         $_SESSION['privilegios'] = 'user';
+         header("Location: ../../admin/vista/user/index.php");
+
       }
    } else {
-      header("Location:../vista/login.html");
+      header("Location: ../vista/login.html");
    }
 
    ?>
-</body>
-</html>
+   
+   

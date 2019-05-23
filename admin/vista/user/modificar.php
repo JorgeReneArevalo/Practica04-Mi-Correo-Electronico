@@ -1,9 +1,12 @@
-<?php
-session_start();  
-if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
-  header("Location: /Practica04/public/vista/login.html"); 
-}
+
+<?php 
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['privilegios'] === 'admin'){ 
+        header("Location: /Practica04/public/vista/login.html"); 
+        } 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,15 +22,18 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <body>
     <?php
         include '../../../config/conexionBD.php';
-        $usuario=$_POST[" usuario"]; 
+        $usuario=$_SESSION['admin'];
+		echo $usuario;
+		
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
+		echo $sql;
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
     ?>
     <div id="contenido">
         <nav>
             <ul class="nav" > 
-                <li><a >INICIO</a></li>
+                <li><a href="index.php" >INICIO</a></li>
                 
                     <?php
                         $usuario = $resultarr["usu_correo"];
@@ -49,8 +55,10 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                             $cad1 = "modificar.php?codigo=";
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
+
                             $cad3 = "cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
+                            
                             $cad4 = "eliminar.php?codigo=";
                             $final3= $cad4 . $cad2;
                         ?>
@@ -67,13 +75,15 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 
     <div >
         <article>
-            <h1>ACTUALIZAR LOS DATOS  </h1>
+            <h1>ACTUALIZAR DATOS </h1>
             <body>
                 <?php 
+                    include '../../../config/conexionBD.php'; 
                     $codigo = $resultarr["usu_codigo"];
                     $sql = "SELECT * FROM usuario where usu_codigo=$codigo"; 
-                    include '../../../config/conexionBD.php'; 
-                    $result = $conn->query($sql); 
+                    $result = $conn->query($sql);
+					echo $sql;
+					
                     if ($result->num_rows > 0) { 
                         while($row = $result->fetch_assoc()) { 
                         ?> 
@@ -106,8 +116,9 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                                     <br>
                                     <button type="submit">ACTUALIZAR</button>
                                 </div> 
+                                
                             </form> 
-                            <?php 
+                <?php 
                         }
                     } else {
                         echo "<p>Ha ocurrido un error inesperado !</p>";    

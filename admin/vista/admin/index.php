@@ -1,24 +1,22 @@
+
 <?php 
-session_start();   
-if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
-    header("Location: /Practica04/public/vista/login.html"); 
-}
+session_start(); 
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['privilegios'] === 'user' ){ 
+        header("Location: /Practica04/public/vista/login.html"); 
+        } 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
-    <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../style/estilo2.css" rel="stylesheet"/>
-    <link href="../../../style/titulos.css" rel="stylesheet"/>
-    <link href="../../../style/imagenes.css" rel="stylesheet"/>
+
     <title>Pagina Admin</title>
 </head>
 <body>
     <?php
         include '../../../config/conexionBD.php';
-        $usuario=$_SESSION['usuario'];
+        $usuario=$_SESSION['admin'];
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
@@ -29,7 +27,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
             <ul class="nav" >
                 <li><a href="index.php" >INICIO</a></li>
 
-                <li><a href="listaUsuario.php">USUARIOS</a></li>
+                <li><a href="listarUsuario.php">USUARIOS</a></li>
 
                 <li><a  >MI CUENTA</a>
                     <ul>

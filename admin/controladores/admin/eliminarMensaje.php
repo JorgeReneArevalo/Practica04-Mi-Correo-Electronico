@@ -10,7 +10,7 @@
     <?php 
         include '../../../config/conexionBD.php'; 
         $codigo = $_GET["codigo"]; 
-        $sql = "DELETE FROM correos WHERE usu_codigo = '$codigo'"; 
+        $sql = "DELETE FROM correo WHERE usu_codigo = '$codigo'"; 
         if ($conn->query($sql) === TRUE) { 
             //echo "<p>MENSAJE ELIMINADO CON EXITO  </p>"; 
             header("Location: ../../vista/admin/index.php");
