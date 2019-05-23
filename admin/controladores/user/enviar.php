@@ -14,16 +14,16 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
         <meta charset=”utf-8” />
         <title>CORREO ENVIADO</title>
         <script src="../../../js/ajax.js" type="text/javascript">  </script>
-        <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
-        <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
-        <link href="../../../estyles/titulos.css" rel="stylesheet"/>
-        <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
+        <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
+        <link href="../../../style/estilo2.css" rel="stylesheet"/>
+        <link href="../../../style/titulos.css" rel="stylesheet"/>
+        <link href="../../../style/imagenes.css" rel="stylesheet"/>
                 
 </head>
 <body>
   <?php 
     include '../../../config/conexionBD.php';
-    $usuario=$_SESSION['user'];
+    $usuario=$_SESSION['usuario'];
     $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
     $result=$conn->query($sql); 
     $resultarr=mysqli_fetch_assoc($result);
@@ -92,7 +92,7 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
           $carta = "Fecha: $fecha \n";
           $carta .= "De: $remitente \n";
           $carta .= "Mensaje: $mensaje";
-          $sql = "INSERT INTO correos VALUES (0,'$fecha', '$remitente','$destinatario','$asunto', '$mensaje')";
+          $sql = "INSERT INTO correo VALUES (0,'$fecha', '$remitente','$destinatario','$asunto', '$mensaje')";
 
         if ($conn->query($sql) === TRUE) {
             echo "ENVIADO CON ÉXITO ";

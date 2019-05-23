@@ -18,7 +18,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
 <body>
     <?php
         include '../../../config/conexionBD.php';
-        $usuario=$_POST["admin"];
+        $usuario=$_SESSION['usuario'];
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);

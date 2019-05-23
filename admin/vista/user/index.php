@@ -8,17 +8,17 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <head>
     <meta charset="UTF-8">
     <script src="../../../js/ajax.js" type="text/javascript">  </script>
-    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyle/estilo2.css" rel="stylesheet"/>
-    <link href="../../../estyle/titulos.css" rel="stylesheet"/>
-    <link href="../../../estyle/imagenes.css" rel="stylesheet"/>
+    <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../style/estilo2.css" rel="stylesheet"/>
+    <link href="../../../style/titulos.css" rel="stylesheet"/>
+    <link href="../../../style/imagenes.css" rel="stylesheet"/>
     <title>Pagina Usuario</title>
 
 </head>
 <body>
     <?php
         include '../../../config/conexionBD.php';
-        $usuario=$_POST[" usuario"]; 
+        $usuario=$_SESSION['usuario'];
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
