@@ -1,10 +1,9 @@
 <?php 
-    session_start(); 
-    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){ 
-        header("Location: /Practica04/public/vista/login.html"); 
-    }
+session_start();   
+if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
+    header("Location: /Practica04/public/vista/login.html"); 
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +13,12 @@
     <link href="../../../style/estilo2.css" rel="stylesheet"/>
     <link href="../../../style/titulos.css" rel="stylesheet"/>
     <link href="../../../style/imagenes.css" rel="stylesheet"/>
-    <title>Pagina Usuario</title>
+    <title>Pagina Admin</title>
 </head>
 <body>
     <?php
         include '../../../config/conexionBD.php';
-        $usuario=$_POST["usuario"];
+        $usuario=$_POST["admin"];
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
@@ -28,9 +27,9 @@
     <div id ="contenido"> 
         <nav >
             <ul class="nav" >
-                <li><a >INICIO</a></li>
+                <li><a href="index.php" >INICIO</a></li>
 
-                <li><a href="listaUsuarios.php">USUARIOS</a></li>
+                <li><a href="listaUsuario.php">USUARIOS</a></li>
 
                 <li><a  >MI CUENTA</a>
                     <ul>
@@ -39,7 +38,7 @@
                             $cad1 = "modificar.php?codigo=";
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
-                            $cad3 = "cambiar_contrasena.php?codigo=";
+                            $cad3 = "cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
                         ?>
                         <li><a href= "<?php echo $final1 ?>" >DATOS  </a></li>
@@ -89,7 +88,7 @@
                             echo " <td>" . $row['usu_remitente'] . "</td>"; 
                             echo " <td>" . $row['usu_destinatario'] . "</td>"; 
                             echo " <td>" . $row['usu_asunto'] . "</td>"; 
-                            echo " <td> <a href='eliminarMensaje.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
+                            echo " <td> <a href='../../controladores/admin/eliminarMensaje.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
                         } 
 
                     }else{

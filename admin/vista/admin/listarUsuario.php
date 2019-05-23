@@ -1,9 +1,18 @@
+<?php 
+session_start();   
+if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
+    header("Location: /Practica04/public/vista/login.html"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyle/estilo.css" rel="stylesheet">
+    <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
+    <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
+    <link href="../../../estyles/titulos.css" rel="stylesheet"/>
+    <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
     <title>Lista de Usuarios</title>
 </head>
 <body>
