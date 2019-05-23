@@ -9,10 +9,10 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
 <head>
     <meta charset="UTF-8">
     <script src="../../../js/ajax.js" type="text/javascript">  </script>
-    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyle/estilo2.css" rel="stylesheet"/>
-    <link href="../../../estyle/titulos.css" rel="stylesheet"/>
-    <link href="../../../estyle/imagenes.css" rel="stylesheet"/>
+    <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../style/estilo2.css" rel="stylesheet"/>
+    <link href="../../../style/titulos.css" rel="stylesheet"/>
+    <link href="../../../style/imagenes.css" rel="stylesheet"/>
     <title>Mensajes Enviados</title>
 </head>
 <body>

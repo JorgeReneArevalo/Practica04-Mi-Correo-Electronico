@@ -9,18 +9,19 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <head>
     <meta charset="UTF-8">
     <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
-    <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
-    <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
-    <link href="../../../estyles/titulos.css" rel="stylesheet"/>
-    <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
-    <link href="../../../estyles/estilo.css" rel="stylesheet">
-    <title>Nuevo Mnesaje</title>
+    <link href="../../../estyle/ct_layout2.css" rel= "stylesheet" />
+    <link href="../../../estyle/estilo2.css" rel="stylesheet"/>
+    <link href="../../../estyle/titulos.css" rel="stylesheet"/>
+    <link href="../../../estyle/imagenes.css" rel="stylesheet"/>
+    <link href="../../../estyle/estilo.css" rel="stylesheet">
+    <title>ACTUALIZAR DATOS</title>
 
 </head>
 <body>
     <?php
+
         include '../../../config/conexionBD.php';
-        $usuario=$_POST[" usuario"]; 
+        $usuario=$_SESSION['usuario']; 
         $sql="SELECT * FROM usuario WHERE usu_correo = '$usuario' ";
         $result=$conn->query($sql); 
         $resultarr=mysqli_fetch_assoc($result);
@@ -32,13 +33,13 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                 
                     <?php
                         $usuario = $resultarr["usu_correo"];
-                        $cad1 = "enviarCorreo.php?usuario=";
+                        $cad1 = "../../vista/user/enviarCorreo.php?usuario=";
                         $final1 = $cad1 . $usuario;
                      ?> 
                 <li><a href="<?php echo $final1 ?>">NUEVO MENSAJE</a></li>
                     <?php 
                         $codigo = $resultarr["usu_codigo"];
-                        $cad1 = "nuevoMensaje.php?usuario=";
+                        $cad1 = "../../vista/usuario/nuevoMensaje.php?usuario=";
                         $final = $cad1 . $usuario;
                     ?>
                 <li><a href= "<?php echo $final ?>" >MENSAJES ENVIADOS </a></li>
@@ -47,12 +48,12 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
                     <ul> 
                         <?php 
                             $codigo = $resultarr["usu_codigo"];
-                            $cad1 = "modificar.php?codigo=";
+                            $cad1 = "../../vista/user/modificar.php?codigo=";
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
-                            $cad3 = "cambiar_contraseña.php?codigo=";
+                            $cad3 = "../../vista/usuario/cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
-                            $cad4 = "eliminar.php?codigo=";
+                            $cad4 = "../../vista/user/eliminar.php?codigo=";
                             $final3= $cad4 . $cad2;
                         ?>
                         <li><a href= "<?php echo $final1 ?>" >DATOS </a></li>
@@ -71,55 +72,33 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
             <h1>ACTUALIZAR LOS DATOS  </h1>
             <body>
                 <?php 
+                    include '../../../config/conexionBD.php';
+
                     $codigo = $resultarr["usu_codigo"];
-                    $sql = "SELECT * FROM usuario where usu_codigo=$codigo"; 
-                    include '../../../config/conexionBD.php'; 
-                    $result = $conn->query($sql); 
-                    if ($result->num_rows > 0) { 
-                        while($row = $result->fetch_assoc()) { 
-                        ?> 
-                            <form id="formulario01" method="POST" action="../../controladores/usser/modificar.php"> 
-                                <legend><Strong> ACTUALIZAR DATOS DEL USUARIO </Strong> </legend> <br> 
-                                <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
-            
-                                <label for="cedula">Cedula (*)</label> 
-                                <input type="text" id="cedula" name="cedula" value="<?php echo $row["usu_cedula"]; ?>" /> <br> 
 
-                                <label for="nombres">Nombres (*)</label> 
-                                <input type="text" id="nombres" name="nombres" value="<?php echo $row["usu_nombres"]; ?>" /> <br> 
-                                
-                                <label for="apellidos">Apelidos (*)</label>
-                                <input type="text" id="apellidos" name="apellidos" value="<?php echo $row["usu_apellidos"]; ?>" /> <br> 
-                                
-                                <label for="direccion">Dirección (*)</label> 
-                                <input type="text" id="direccion" name="direccion" value="<?php echo $row["usu_direccion"]; ?>" /> <br> 
-                                
-                                <label for="telefono">Teléfono (*)</label> 
-                                <input type="text" id="telefono" name="telefono" value="<?php echo $row["usu_telefono"]; ?>" /> <br> 
-                                
-                                <label for="fecha">Fecha Nacimiento (*)</label> 
-                                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $row["usu_fecha_nacimiento"]; ?>" /> <br> 
-                                
-                                <label for="correo">Correo electrónico (*)</label> 
-                                <input type="email" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" /> <br> 
+                    $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
+                    $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null;
+                    $apellidos = isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'UTF-8') : null; 
+                    $direccion = isset($_POST["direccion"]) ? mb_strtoupper(trim($_POST["direccion"]), 'UTF-8') : null; 
+                    $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]): null;
+                    $correo = isset($_POST["correo"]) ? trim($_POST["correo"]): null;
+                    $fechaNacimiento = isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]): null; 
 
-                                <div class="button">
-                                    <br>
-                                    <button type="submit">ACTUALIZAR</button>
-                                </div> 
-                            </form> 
-                            <?php 
-                        }
-                    } else {
-                        echo "<p>Ha ocurrido un error inesperado !</p>";    
-                        echo "<p>" . mysqli_error($conn) . "</p>"; 
-                    }
+                    date_default_timezone_set("America/Guayaquil"); 
+                    $fecha = date('Y-m-d H:i:s', time()); 
+
+                    $sql = "UPDATE usuario " . "SET usu_cedula = '$cedula', " . "usu_nombres = '$nombres', " . "usu_apellidos = '$apellidos', " . "usu_direccion = '$direccion', " . "usu_telefono = '$telefono', " . "usu_correo = '$correo', " . "usu_fecha_nacimiento = '$fechaNacimiento', " . "usu_fecha_modificacion = '$fecha' " . "WHERE usu_codigo = $codigo"; 
+                            
+                    if ($conn->query($sql) === TRUE) {
+                        echo "DATOS ACTUALIZADOS CORRECTAMENTE<br>"; 
+                    } else { 
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>"; 
+                    } 
                     $conn->close(); 
                 ?>
             </body> 
         </article>
     </div>
-
 
 </body>
 </html>

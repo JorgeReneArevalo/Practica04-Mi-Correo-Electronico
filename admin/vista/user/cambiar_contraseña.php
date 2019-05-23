@@ -9,11 +9,11 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
 <head>
   <meta charset="UTF-8">
   <script src="../../../js/cargarImagen.js" type="text/javascript">  </script>
-  <link href="../../../estyles/ct_layout2.css" rel= "stylesheet" />
-  <link href="../../../estyles/estilo2.css" rel="stylesheet"/>
-  <link href="../../../estyles/titulos.css" rel="stylesheet"/>
-  <link href="../../../estyles/imagenes.css" rel="stylesheet"/>
-  <link href="../../../estyles/estilo.css" rel="stylesheet">
+  <link href="../../../style/ct_layout2.css" rel= "stylesheet" />
+  <link href="../../../style/estilo2.css" rel="stylesheet"/>
+  <link href="../../../style/titulos.css" rel="stylesheet"/>
+  <link href="../../../style/imagenes.css" rel="stylesheet"/>
+  <link href="../../../style/estilo.css" rel="stylesheet">
   <title>ACTUALIZAR CONTRASEÑA </title>
 </head>
 <body>
