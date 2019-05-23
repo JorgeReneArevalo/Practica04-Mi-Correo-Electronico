@@ -13,7 +13,7 @@
         $sql = "DELETE FROM correos WHERE usu_codigo = '$codigo'"; 
         if ($conn->query($sql) === TRUE) { 
             //echo "<p>MENSAJE ELIMINADO CON EXITO  </p>"; 
-            header("Location: ../../vista/usuario/index.php");
+            header("Location: ../../vista/admin/index.php");
 
         } else {
             echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) . "</p>"; 

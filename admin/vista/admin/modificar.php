@@ -38,7 +38,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
                             $cad2 = $codigo;
                             $final1 = $cad1 . $cad2;
 
-                            $cad3 = "cambiar_contrasena.php?codigo=";
+                            $cad3 = "cambiar_contraseña.php?codigo=";
                             $final2= $cad3 . $cad2;
                         ?>
                         <li><a href= "<?php echo $final1 ?>" >DATOS  </a></li>
@@ -63,7 +63,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
                     if ($result->num_rows > 0) { 
                         while($row = $result->fetch_assoc()) { 
                         ?> 
-                            <form id="formulario01" method="POST" action="../../controladores/usuario/modificar.php"> 
+                            <form id="formulario01" method="POST" action="../../controladores/admin/modificar.php"> 
                             <legend><Strong> ACTUALIZAR DATOS DEL USUARIO </Strong> </legend> <br> 
                             <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
                             

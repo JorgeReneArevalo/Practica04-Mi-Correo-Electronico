@@ -28,7 +28,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
         <nav > 
             <ul class="nav" >
                 <li><a href="index.php">INICIO</a></li>
-                    <li><a href="listaUsuarios.php">USUARIOS</a></li>
+                    <li><a href="listaUsuario.php">USUARIOS</a></li>
                     <li><a  >MI CUENTA</a>
                         <ul>     
                             <?php 
@@ -37,7 +37,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
                                 $cad2 = $codigo;
                                 $final1 = $cad1 . $cad2;
 
-                                $cad3 = "cambiar_contrasena.php?codigo=";
+                                $cad3 = "cambiar_contraseña.php?codigo=";
                                 $final2= $cad3 . $cad2;
 
                             ?>
@@ -57,7 +57,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
                 <?php 
                     $codigo = $resultarr["usu_codigo"];
                 ?>         
-                 <form id="formulario01" method="POST" action="../../controladores/usuario/cambiar_contrasena.php"> 
+                 <form id="formulario01" method="POST" action="../../controladores/usuario/cambiar_contraseña.php"> 
                     <legend><Strong>ACTUALIZAR SU CONTRASEÑA </Strong> </legend> <br> 
                     <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" /> 
                 
